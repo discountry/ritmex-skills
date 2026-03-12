@@ -1,19 +1,11 @@
 ---
 name: use-ctx7
-description: Fetch up-to-date library documentation via the ctx7 CLI. Use PROACTIVELY
-  whenever any code change, feature design, or implementation involves a
-  project dependency — always query the matching version's docs first before
-  writing code. Also use when the user explicitly asks for library docs, code
-  examples, or API usage. Triggers on: any task touching project dependencies
-  (e.g. React, Next.js, Prisma, Tailwind, etc.), "ctx7", "fetch docs",
-  "library docs", "look up API", "how to use [library]".
+description: Fetch up-to-date library documentation via the ctx7 CLI. Use PROACTIVELY whenever any code change, feature design, or implementation or user request involves a project dependency — always query the matching version's docs first before writing code.
 ---
-
-# Use ctx7 — Fetch Library Documentation
 
 Query indexed library documentation via the `ctx7` CLI. Always follow the two-step process below.
 
-## Step 1: Resolve Library ID
+## 1.Resolve Library ID
 
 ```bash
 ctx7 library <name> "<specific question>"
@@ -33,7 +25,7 @@ The query ranks results by relevance — be descriptive, not single-keyword.
 
 For a specific version, use the version ID from results (e.g. `/vercel/next.js/v14.3.0-canary.87`).
 
-## Step 2: Fetch Documentation
+## 2.Fetch Documentation
 
 ```bash
 ctx7 docs <library-id> "<specific question>"
@@ -56,17 +48,9 @@ ctx7 docs /vercel/next.js "middleware for route protection" | head -50
 ## Examples
 
 ```bash
-# React hooks cleanup
-ctx7 library react "How to clean up useEffect with async operations"
-ctx7 docs /facebook/react "How to clean up useEffect with async operations"
-
 # Next.js app router
 ctx7 library nextjs "How to set up app router with middleware"
 ctx7 docs /vercel/next.js "How to set up app router with middleware"
-
-# Prisma relations
-ctx7 library prisma "How to define one-to-many relations with cascade delete"
-ctx7 docs /prisma/prisma "How to define one-to-many relations with cascade delete"
 
 # Scripting: resolve ID then fetch
 ctx7 library react "hooks" --json | jq '.[0].id'
