@@ -1,6 +1,6 @@
 # ritmex-skills
 
-A collection of reusable [Cursor Agent Skills](https://docs.cursor.com/context/skills) for AI-assisted workflows.
+A collection of reusable AI coding agent skills compatible with mainstream AI-powered coding tools.
 
 ## Skills
 
