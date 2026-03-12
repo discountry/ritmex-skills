@@ -9,6 +9,7 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[use-ctx7](skills/use-ctx7/SKILL.md)** | Fetch up-to-date library documentation via the `ctx7` CLI. Proactively queries matching version docs before writing code for any project dependency. |
 | **[svg-logo-maker](skills/svg-logo-maker/SKILL.md)** | Design and generate production-quality SVG logos in modern minimalist style using svg.js and browser-based visual verification. |
 | **[airdrop-tracker](skills/airdrop-tracker/SKILL.md)** | Track recently updated airdrop projects from CryptoRank, save reports locally, and send Telegram notifications. |
+| **[refactor](skills/refactor/SKILL.md)** | Iteratively refactor any codebase for readability, maintainability, and reuse. Enforces size budgets, naming rules, single-responsibility, and decoupling — guided by Fowler, Martin, and Boswell & Foucher. |
 
 ## Installation
 
@@ -23,6 +24,9 @@ npx skills add https://github.com/discountry/ritmex-skills --skill svg-logo-make
 
 # airdrop-tracker — Airdrop project tracker
 npx skills add https://github.com/discountry/ritmex-skills --skill airdrop-tracker
+
+# refactor — Iterative code refactoring
+npx skills add https://github.com/discountry/ritmex-skills --skill refactor
 ```
 
 ## License
