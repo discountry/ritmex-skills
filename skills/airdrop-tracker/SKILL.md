@@ -1,39 +1,32 @@
 ---
 name: airdrop-tracker
-description: 追踪和整理 CryptoRank 上最近 3 天更新的空投项目。先保存报告到本地，再发送精简的 Telegram 通知。
+description: Track recently updated airdrop projects from CryptoRank (last 3 days). Save report locally, then send a concise Telegram notification.
 ---
 
 # Airdrop Tracker
 
-## 工作流程
+## Workflow
 
-1. **抓取数据**:
-   - 打开 `https://cryptorank.io/drophunting?rows=50&page=1`。
-   - 识别最近 3 天更新的项目（1d, 2d, 3d 或对应日期）。
-   - 提取：项目名称、融资额、投资机构、官网链接、X 链接。
+1. **Scrape**: Open `https://cryptorank.io/drophunting?rows=50&page=1`. Filter projects updated within 3 days (1d, 2d, 3d or equivalent dates). Extract: project name, funding amount, investors, website URL, X link.
 
-2. **保存本地 (必须完成)**:
-   - 保存至 `~/Documents/airdrops/`。
-   - 文件：`airdrops_YYYY-MM-DD.json` 和 `airdrops_YYYY-MM-DD.md`。
+2. **Save locally (required)**: Write to `~/Documents/airdrops/` as `airdrops_YYYY-MM-DD.json` and `airdrops_YYYY-MM-DD.md`.
 
-3. **发送通知**:
-   - 完成保存后询问用户。
-   - 使用 `mcp__telegram-notification__send_notification` 发送，指定 `parse_mode: "HTML"`。
+3. **Notify**: After saving, ask the user before sending. Use `mcp__telegram-notification__send_notification` with `parse_mode: "HTML"`.
 
-## Telegram 通知格式
+## Telegram Format
 
 ```
-🪂 空投项目日报 - YYYY-MM-DD
+🪂 Airdrop Daily - YYYY-MM-DD
 
-发现 N 个近期更新的空投项目：
+Found N recently updated airdrop projects:
 
-1. <a href="WEBSITE_URL">ProjectName</a> - $XXM 融资
-2. <a href="WEBSITE_URL">ProjectName</a> - $XXM 融资
+1. <a href="WEBSITE_URL">ProjectName</a> - $XXM raised
+2. <a href="WEBSITE_URL">ProjectName</a> - $XXM raised
 ...
 ```
 
-## 注意事项
+## Notes
 
-- 优先处理前 10 个最新项目。
-- 融资额缺失标记为 "N/A"。
-- 页面加载问题请重试。
+- Prioritize the top 10 most recent projects.
+- Mark missing funding as "N/A".
+- Retry on page load failures.
