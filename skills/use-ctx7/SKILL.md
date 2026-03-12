@@ -1,11 +1,12 @@
 ---
 name: use-ctx7
-description: >-
-  Fetch up-to-date library documentation via the ctx7 CLI. Use when the user
-  needs docs for any library, asks "how do I use X library", wants code examples
-  from official docs, or needs to look up API usage for a specific package or
-  framework version. Triggers on: "ctx7", "fetch docs", "library docs",
-  "look up API", "how to use [library]".
+description: Fetch up-to-date library documentation via the ctx7 CLI. Use PROACTIVELY
+  whenever any code change, feature design, or implementation involves a
+  project dependency — always query the matching version's docs first before
+  writing code. Also use when the user explicitly asks for library docs, code
+  examples, or API usage. Triggers on: any task touching project dependencies
+  (e.g. React, Next.js, Prisma, Tailwind, etc.), "ctx7", "fetch docs",
+  "library docs", "look up API", "how to use [library]".
 ---
 
 # Use ctx7 — Fetch Library Documentation
