@@ -10,6 +10,8 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[svg-logo-maker](skills/svg-logo-maker/SKILL.md)** | Design and generate production-quality SVG logos in modern minimalist style using svg.js and browser-based visual verification. |
 | **[airdrop-tracker](skills/airdrop-tracker/SKILL.md)** | Track recently updated airdrop projects from CryptoRank, save reports locally, and send Telegram notifications. |
 | **[refactor](skills/refactor/SKILL.md)** | Iteratively refactor any codebase for readability, maintainability, and reuse. Enforces size budgets, naming rules, single-responsibility, and decoupling — guided by Fowler, Martin, and Boswell & Foucher. |
+| **[codex](skills/codex/SKILL.md)** | Master guide for the OpenAI Codex CLI — models, best practices, AGENTS.md configuration, interactive and non-interactive modes, session management, MCP integration, and multi-agent workflows. |
+| **[debug](skills/debug/SKILL.md)** | Systematically surface logic flaws, latent bugs, performance bottlenecks, security vulnerabilities, and test gaps. Biases toward recently changed code — commits, staged changes, and modified files. |
 
 ## Installation
 
@@ -27,6 +29,12 @@ npx skills add https://github.com/discountry/ritmex-skills --skill airdrop-track
 
 # refactor — Iterative code refactoring
 npx skills add https://github.com/discountry/ritmex-skills --skill refactor
+
+# codex — OpenAI Codex CLI guide
+npx skills add https://github.com/discountry/ritmex-skills --skill codex
+
+# debug — Systematic code debugger
+npx skills add https://github.com/discountry/ritmex-skills --skill debug
 ```
 
 ## License
