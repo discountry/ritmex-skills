@@ -74,3 +74,11 @@ Use the global `clickup` CLI. See `README.md` for installation, configuration, a
 Use correct ClickUp URL formats:
 - Task: `https://app.clickup.com/t/{task_id}`
 - Doc: `https://app.clickup.com/{workspace_id}/v/dc/{doc_id}/{page_id}`
+
+## Document Creation Best Practices
+
+When creating ClickUp docs:
+1. Set both doc title (via `create-doc "title"`) and page name (via `edit-page --name "page title"`), never leave page name null.
+2. Always use `--content-format text/md` for markdown content; otherwise markdown syntax may be escaped.
+3. Do not repeat the document title inside page content—the title is separate metadata.
+4. Verify Doc URLs contain all three IDs: workspace, doc, and page.
