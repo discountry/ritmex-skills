@@ -14,6 +14,7 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[codex](skills/codex/SKILL.md)** | Master guide for the OpenAI Codex CLI — models, best practices, AGENTS.md configuration, interactive and non-interactive modes, session management, MCP integration, and multi-agent workflows. |
 | **[debug](skills/debug/SKILL.md)** | Systematically surface logic flaws, latent bugs, performance bottlenecks, security vulnerabilities, and test gaps. Biases toward recently changed code — commits, staged changes, and modified files. |
 | **[clickup](skills/clickup/SKILL.md)** | Work with ClickUp tasks and docs using the `clickup` CLI. |
+| **[slack](skills/slack/SKILL.md)** | Control Slack via the `slack` CLI to read, search, and manage messages, threads, files, reactions, channels, DMs, and canvases. |
 
 ## Installation
 
@@ -43,6 +44,9 @@ npx skills add https://github.com/discountry/ritmex-skills --skill debug
 
 # clickup — ClickUp tasks and docs
 npx skills add https://github.com/discountry/ritmex-skills --skill clickup
+
+# slack — Control Slack via the `slack` CLI
+npx skills add https://github.com/discountry/ritmex-skills --skill slack
 ```
 
 ## License
