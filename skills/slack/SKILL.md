@@ -1,6 +1,6 @@
+---
 name: slack
-description: |
-  Control Slack via the `agent-slack` CLI to read, search, and manage messages, threads, files, reactions, channels, DMs, and canvases. Trigger on requests involving Slack messages, threads, URLs, channel history, unread or recent DMs, or sending/replying to messages (English or Chinese queries mentioning Slack).
+description: Control Slack via the `agent-slack` CLI to read, search, and manage messages, threads, files, reactions, channels, DMs, and canvases. Trigger on requests involving Slack messages, threads, URLs, channel history, unread or recent DMs, or sending/replying to messages (English or Chinese queries mentioning Slack).
 ---
 
 ## Usage
