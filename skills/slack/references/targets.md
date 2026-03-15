@@ -1,6 +1,6 @@
 # Targets: URL vs channel (reference)
 
-`agent-slack` accepts either a **Slack message URL** (preferred) or a **channel reference**.
+`slack` accepts either a **Slack message URL** (preferred) or a **channel reference**.
 
 ## Preferred: Slack message URL
 
@@ -12,13 +12,13 @@ https://<workspace>.slack.com/archives/<channel_id>/p<digits>[?thread_ts=...]
 
 Examples:
 
-- `agent-slack message get "<url>"`
-- `agent-slack message list "<url>"`
-- `agent-slack message send "<url>" "reply text"`
-- `agent-slack message edit "<url>" "updated text"`
-- `agent-slack message delete "<url>"`
-- `agent-slack message react add "<url>" "eyes"`
-- `agent-slack channel mark "<url>"`
+- `slack message get "<url>"`
+- `slack message list "<url>"`
+- `slack message send "<url>" "reply text"`
+- `slack message edit "<url>" "updated text"`
+- `slack message delete "<url>"`
+- `slack message react add "<url>" "eyes"`
+- `slack channel mark "<url>"`
 
 ## Channel targets (when you don’t have a URL)
 
@@ -30,44 +30,44 @@ Channel references can be:
 ### `message get` by channel + `--ts`
 
 ```bash
-agent-slack message get "general" --ts "1770165109.628379"
+slack message get "general" --ts "1770165109.628379"
 ```
 
 ### `message list` by channel + `--thread-ts` (or `--ts` to resolve)
 
 ```bash
-agent-slack message list "general" --thread-ts "1770165109.000001"
-agent-slack message list "general" --ts "1770165109.628379"
-agent-slack message list "general" --without-reaction dart --limit 20
+slack message list "general" --thread-ts "1770165109.000001"
+slack message list "general" --ts "1770165109.628379"
+slack message list "general" --without-reaction dart --limit 20
 ```
 
 ### Reactions by channel + `--ts`
 
 ```bash
-agent-slack message react add "general" "eyes" --ts "1770165109.628379"
+slack message react add "general" "eyes" --ts "1770165109.628379"
 ```
 
 ### Edit/delete by channel + `--ts`
 
 ```bash
-agent-slack message edit "general" "updated text" --ts "1770165109.628379"
-agent-slack message delete "general" --ts "1770165109.628379"
+slack message edit "general" "updated text" --ts "1770165109.628379"
+slack message delete "general" --ts "1770165109.628379"
 ```
 
 ### Mark as read by channel + `--ts`
 
 ```bash
-agent-slack channel mark "general" --ts "1770165109.628379"
-agent-slack channel mark "D0A04PB2QBW" --ts "1770165109.628379"
+slack channel mark "general" --ts "1770165109.628379"
+slack channel mark "D0A04PB2QBW" --ts "1770165109.628379"
 ```
 
 ### Channel admin by id/name
 
 ```bash
-agent-slack channel invite --channel "general" --users "@alice,bob@example.com"
-agent-slack channel invite --channel "C0123ABCDEF" --users "U01234567"
-agent-slack channel invite --channel "shared-room" --users "partner@vendor.com" --external
-agent-slack channel invite --channel "shared-room" --users "partner@vendor.com" --external --allow-external-user-invites
+slack channel invite --channel "general" --users "@alice,bob@example.com"
+slack channel invite --channel "C0123ABCDEF" --users "U01234567"
+slack channel invite --channel "shared-room" --users "partner@vendor.com" --external
+slack channel invite --channel "shared-room" --users "partner@vendor.com" --external --allow-external-user-invites
 ```
 
 ## Multi-workspace ambiguity (channel names only)

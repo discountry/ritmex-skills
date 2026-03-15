@@ -1,22 +1,22 @@
-# `agent-slack` command map (reference)
+# `slack` command map (reference)
 
-Run `agent-slack --help` (or `agent-slack <command> --help`) for the full option list.
+Run `slack --help` (or `slack <command> --help`) for the full option list.
 
 ## Auth
 
-- `agent-slack auth whoami` — show configured workspaces + token sources (secrets redacted)
-- `agent-slack auth test [--workspace <url-or-unique-substring>]` — verify credentials (`auth.test`)
-- `agent-slack auth import-desktop` — import browser-style creds from Slack Desktop (macOS/Windows)
-- `agent-slack auth import-chrome` — import creds from Chrome (macOS)
-- `agent-slack auth import-firefox` — import creds from Firefox profile storage (macOS/Linux)
-- `agent-slack auth parse-curl` — read a copied Slack cURL command from stdin and save creds
-- `agent-slack auth add --workspace-url <url> [--token <xoxb/xoxp> | --xoxc <xoxc> --xoxd <xoxd>]`
-- `agent-slack auth set-default <workspace-url>`
-- `agent-slack auth remove <workspace-url>`
+- `slack auth whoami` — show configured workspaces + token sources (secrets redacted)
+- `slack auth test [--workspace <url-or-unique-substring>]` — verify credentials (`auth.test`)
+- `slack auth import-desktop` — import browser-style creds from Slack Desktop (macOS/Windows)
+- `slack auth import-chrome` — import creds from Chrome (macOS)
+- `slack auth import-firefox` — import creds from Firefox profile storage (macOS/Linux)
+- `slack auth parse-curl` — read a copied Slack cURL command from stdin and save creds
+- `slack auth add --workspace-url <url> [--token <xoxb/xoxp> | --xoxc <xoxc> --xoxd <xoxd>]`
+- `slack auth set-default <workspace-url>`
+- `slack auth remove <workspace-url>`
 
 ## Messages / threads
 
-- `agent-slack message get <target>`
+- `slack message get <target>`
   - `<target>`: Slack message URL OR `#channel`/`channel`/channel id (`C...`) (see `targets.md`)
   - Options:
     - `--workspace <url-or-unique-substring>` (required when using a channel _name_ across multiple workspaces)
@@ -25,14 +25,14 @@ Run `agent-slack --help` (or `agent-slack <command> --help`) for the full option
     - `--max-body-chars <n>` (default `8000`, `-1` unlimited)
     - `--include-reactions`
 
-- `agent-slack message list <target>`
+- `slack message list <target>`
   - Lists recent channel messages (channel history), or fetches all thread replies
   - **Channel history** (default when targeting a channel without `--thread-ts`):
-    - `agent-slack message list "general"` — latest 25 messages
-    - `agent-slack message list "general" --limit 50` — latest 50 messages
+    - `slack message list "general"` — latest 25 messages
+    - `slack message list "general" --limit 50` — latest 50 messages
   - **Thread mode** (when `--thread-ts` or `--ts` is provided, or target is a message URL):
-    - `agent-slack message list "<url>"` — all replies in that thread
-    - `agent-slack message list "general" --thread-ts "1770165109.000001"` — thread replies
+    - `slack message list "<url>"` — all replies in that thread
+    - `slack message list "general" --thread-ts "1770165109.000001"` — thread replies
   - Options:
     - `--workspace <url-or-unique-substring>` (same rules as above)
     - `--thread-ts <seconds>.<micros>` (switches to thread mode; fetches replies)
@@ -45,7 +45,7 @@ Run `agent-slack --help` (or `agent-slack <command> --help`) for the full option
     - `--max-body-chars <n>` (default `8000`, `-1` unlimited)
     - `--include-reactions`
 
-- `agent-slack message draft <target> [text]`
+- `slack message draft <target> [text]`
   - Opens a Slack-like WYSIWYG editor in the browser for composing and sending a message.
   - Formatting toolbar: bold, italic, strikethrough, links, numbered/bulleted lists, quotes, inline code, code blocks.
   - Toggle between rich-text editing and raw mrkdwn source view.
@@ -55,7 +55,7 @@ Run `agent-slack --help` (or `agent-slack <command> --help`) for the full option
     - `--workspace <url-or-unique-substring>` (needed for channel _names_ across multiple workspaces)
     - `--thread-ts <seconds>.<micros>` (optional, channel mode only)
 
-- `agent-slack message send <target> <text>`
+- `slack message send <target> <text>`
   - If `<target>` is a Slack message URL, replies in that message’s thread.
   - Otherwise posts to the channel/DM.
   - Bullet lists (`- `, `* `, `• `, `1. `, etc.) are automatically converted to Slack’s native rich text format, so recipients see real editable bullets instead of plain-text dashes.
@@ -64,48 +64,48 @@ Run `agent-slack --help` (or `agent-slack <command> --help`) for the full option
     - `--thread-ts <seconds>.<micros>` (optional, channel mode only)
     - `--attach <path>` (repeatable; upload local files as attachments)
 
-- `agent-slack message edit <target> <text>`
+- `slack message edit <target> <text>`
   - URL target edits that exact message.
   - Channel target requires `--ts`.
   - Options:
     - `--workspace <url-or-unique-substring>` (needed for channel _names_ across multiple workspaces)
     - `--ts <seconds>.<micros>` (required for channel targets)
 
-- `agent-slack message delete <target>`
+- `slack message delete <target>`
   - URL target deletes that exact message.
   - Channel target requires `--ts`.
   - Options:
     - `--workspace <url-or-unique-substring>` (needed for channel _names_ across multiple workspaces)
     - `--ts <seconds>.<micros>` (required for channel targets)
 
-- `agent-slack message react add <target> <emoji>`
-- `agent-slack message react remove <target> <emoji>`
+- `slack message react add <target> <emoji>`
+- `slack message react remove <target> <emoji>`
   - Options (channel mode):
     - `--workspace <url-or-unique-substring>` (needed for channel _names_ across multiple workspaces)
     - `--ts <seconds>.<micros>` (required for channel targets)
 
 ## Channels
 
-- `agent-slack channel list [--workspace <url-or-unique-substring>] [--user <U...|@handle|handle> | --all] [--limit <n>] [--cursor <cursor>]`
+- `slack channel list [--workspace <url-or-unique-substring>] [--user <U...|@handle|handle> | --all] [--limit <n>] [--cursor <cursor>]`
   - Default mode calls `users.conversations` for the current user.
   - `--user` resolves handles/ids and lists conversations for that user.
   - `--all` switches to `conversations.list` (mutually exclusive with `--user`).
   - Returns one page and optional `next_cursor`; pass `--cursor` to continue.
-- `agent-slack channel new --name <name> [--private] [--workspace <url-or-unique-substring>]`
-- `agent-slack channel invite --channel <id|name> --users "<U...,@handle,email,...>" [--workspace <url-or-unique-substring>]`
+- `slack channel new --name <name> [--private] [--workspace <url-or-unique-substring>]`
+- `slack channel invite --channel <id|name> --users "<U...,@handle,email,...>" [--workspace <url-or-unique-substring>]`
   - Internal invite (default): resolves users (`U...`, `@handle`, `handle`, `email`) and uses `conversations.invite`
   - External invite: add `--external` (email targets only) to use `conversations.inviteShared`
   - Optional: `--allow-external-user-invites` sets `external_limited=false` for external invites
-- `agent-slack channel mark <target> [--ts <seconds>.<micros>] [--workspace <url-or-unique-substring>]`
+- `slack channel mark <target> [--ts <seconds>.<micros>] [--workspace <url-or-unique-substring>]`
   - Marks a channel/DM as read up to the given message timestamp (`conversations.mark`)
   - URL target extracts channel, ts, and workspace automatically; `--ts` optionally overrides the URL timestamp; `--workspace` is rejected
   - Channel name/ID target requires `--ts`
 
 ## Search
 
-- `agent-slack search all <query>` — messages + files (default)
-- `agent-slack search messages <query>`
-- `agent-slack search files <query>`
+- `slack search all <query>` — messages + files (default)
+- `slack search messages <query>`
+- `slack search files <query>`
 
 Common options:
 
@@ -120,13 +120,13 @@ Common options:
 
 ## Canvas
 
-- `agent-slack canvas get <canvas-url-or-id>`
+- `slack canvas get <canvas-url-or-id>`
   - Options:
     - `--workspace <url-or-unique-substring>` (required when passing an id and multiple workspaces)
     - `--max-chars <n>` (default `20000`, `-1` unlimited)
 
 ## Users
 
-- `agent-slack user list [--workspace <url-or-unique-substring>] [--limit <n>] [--cursor <cursor>] [--include-bots]`
-- `agent-slack user get <U...|@handle|handle> [--workspace <url-or-unique-substring>]`
-- `agent-slack user dm-open <users...> [--workspace <url-or-unique-substring>]` — get DM or group DM channel ID for one or more users (max 8)
+- `slack user list [--workspace <url-or-unique-substring>] [--limit <n>] [--cursor <cursor>] [--include-bots]`
+- `slack user get <U...|@handle|handle> [--workspace <url-or-unique-substring>]`
+- `slack user dm-open <users...> [--workspace <url-or-unique-substring>]` — get DM or group DM channel ID for one or more users (max 8)
