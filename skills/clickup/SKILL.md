@@ -69,3 +69,8 @@ Use the global `clickup` CLI. See `README.md` for installation, configuration, a
 - `clickup edit-page <doc_id> <page_id>` requires `--name`, `--sub-title`, or `--content`. It also supports `--content-edit-mode` and `--content-format`.
 - `watch` posts an `@mention` comment.
 
+## URL Structure
+
+Use correct ClickUp URL formats:
+- Task: `https://app.clickup.com/t/{task_id}`
+- Doc: `https://app.clickup.com/{workspace_id}/v/dc/{doc_id}/{page_id}`
