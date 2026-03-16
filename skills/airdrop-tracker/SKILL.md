@@ -1,6 +1,7 @@
 ---
 name: airdrop-tracker
 description: Track recently updated airdrop projects from CryptoRank (last 3 days). Save report locally, then send a concise Telegram notification.
+disable-model-invocation: true
 ---
 
 # Airdrop Tracker

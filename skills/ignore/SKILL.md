@@ -1,6 +1,7 @@
 ---
 name: ignore
 description: Generate or update a .gitignore file based on the current project stack and tools. Use when the user invokes /ignore or asks to create, fix, or audit a .gitignore for the current repository.
+disable-model-invocation: true
 ---
 
 # /ignore – Project-Aware .gitignore
