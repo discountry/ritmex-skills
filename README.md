@@ -15,6 +15,7 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[codex](skills/codex/SKILL.md)** | Master guide for the OpenAI Codex CLI — models, best practices, AGENTS.md configuration, interactive and non-interactive modes, session management, MCP integration, and multi-agent workflows. |
 | **[debug](skills/debug/SKILL.md)** | Systematically surface logic flaws, latent bugs, performance bottlenecks, security vulnerabilities, and test gaps. Biases toward recently changed code — commits, staged changes, and modified files. |
 | **[tdd](skills/tdd/SKILL.md)** | Drive net-new features with a strict red→green→refactor loop. Test-first behavior slices, minimal diffs, deterministic verification. |
+| **[react-principles](skills/react-principles/SKILL.md)** | React best practices for component design, state management, and Effect discipline. Use when writing, reviewing, or refactoring React components and hooks. |
 | **[clickup](skills/clickup/SKILL.md)** | Work with ClickUp tasks and docs using the `clickup` CLI. |
 | **[slack](skills/slack/SKILL.md)** | Control Slack via the `slack` CLI to read, search, and manage messages, threads, files, reactions, channels, DMs, and canvases. |
 
@@ -46,6 +47,9 @@ npx skills add https://github.com/discountry/ritmex-skills --skill codex
 
 # debug — Systematic code debugger
 npx skills add https://github.com/discountry/ritmex-skills --skill debug
+
+# react-principles — React component + Effect discipline
+npx skills add https://github.com/discountry/ritmex-skills --skill react-principles
 
 # clickup — ClickUp tasks and docs
 npx skills add https://github.com/discountry/ritmex-skills --skill clickup
