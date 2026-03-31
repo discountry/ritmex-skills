@@ -18,6 +18,10 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[react-principles](skills/react-principles/SKILL.md)** | React best practices for component design, state management, and Effect discipline. Use when writing, reviewing, or refactoring React components and hooks. |
 | **[clickup](skills/clickup/SKILL.md)** | Work with ClickUp tasks and docs using the `clickup` CLI. |
 | **[slack](skills/slack/SKILL.md)** | Control Slack via the `slack` CLI to read, search, and manage messages, threads, files, reactions, channels, DMs, and canvases. |
+| **[humanizer-zh](skills/humanizer-zh/SKILL.md)** | 去除文本中的 AI 生成痕迹，使其更自然、更像人类书写。基于维基百科"AI 写作特征"综合指南。 |
+| **[refine](skills/refine/SKILL.md)** | Improve UI/UX aesthetics and hierarchy — color, spacing, typography, layout, components. Trigger on beautify/polish/refine/modernize requests. |
+| **[post-tweet](skills/tweet/post-tweet.md)** | Post a tweet to X (Twitter) using the x-post-mcp server. Supports replies and quote tweets. |
+| **[codex-prompt-optimize](skills/codex-prompt-optimize/SKILL.md)** | Auto-trigger in Codex when user input is vague, ambiguous, or incomplete. Analyzes intent and emits a well-formed prompt before execution. |
 
 ## Installation
 
@@ -25,37 +29,49 @@ Install individual skills into your project using `npx skills`:
 
 ```bash
 # use-ctx7 — Library documentation fetcher
-npx skills add https://github.com/discountry/ritmex-skills --skill use-ctx7
+npx skills add discountry/ritmex-skills --skill use-ctx7
 
 # svg-logo-maker — SVG logo generator
-npx skills add https://github.com/discountry/ritmex-skills --skill svg-logo-maker
+npx skills add discountry/ritmex-skills --skill svg-logo-maker
 
 # document — Subagent-driven documentation writer
-npx skills add https://github.com/discountry/ritmex-skills --skill document
+npx skills add discountry/ritmex-skills --skill document
 
 # ignore — Project-aware .gitignore management
-npx skills add https://github.com/discountry/ritmex-skills --skill ignore
+npx skills add discountry/ritmex-skills --skill ignore
 
 # airdrop-tracker — Airdrop project tracker
-npx skills add https://github.com/discountry/ritmex-skills --skill airdrop-tracker
+npx skills add discountry/ritmex-skills --skill airdrop-tracker
 
 # refactor — Iterative code refactoring
-npx skills add https://github.com/discountry/ritmex-skills --skill refactor
+npx skills add discountry/ritmex-skills --skill refactor
 
 # codex — OpenAI Codex CLI guide
-npx skills add https://github.com/discountry/ritmex-skills --skill codex
+npx skills add discountry/ritmex-skills --skill codex
 
 # debug — Systematic code debugger
-npx skills add https://github.com/discountry/ritmex-skills --skill debug
+npx skills add discountry/ritmex-skills --skill debug
 
 # react-principles — React component + Effect discipline
-npx skills add https://github.com/discountry/ritmex-skills --skill react-principles
+npx skills add discountry/ritmex-skills --skill react-principles
 
 # clickup — ClickUp tasks and docs
-npx skills add https://github.com/discountry/ritmex-skills --skill clickup
+npx skills add discountry/ritmex-skills --skill clickup
 
 # slack — Control Slack via the `slack` CLI
-npx skills add https://github.com/discountry/ritmex-skills --skill slack
+npx skills add discountry/ritmex-skills --skill slack
+
+# humanizer-zh — AI 文本人性化（中文）
+npx skills add discountry/ritmex-skills --skill humanizer-zh
+
+# refine — UI/UX aesthetics optimizer
+npx skills add discountry/ritmex-skills --skill refine
+
+# post-tweet — Post tweets to X (Twitter)
+npx skills add discountry/ritmex-skills --skill tweet
+
+# codex-prompt-optimize — Auto prompt optimization for Codex
+npx skills add discountry/ritmex-skills --skill codex-prompt-optimize
 ```
 
 ## License
