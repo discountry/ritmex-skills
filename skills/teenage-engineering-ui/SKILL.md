@@ -1,33 +1,28 @@
 ---
 name: teenage-engineering-ui
 description: >-
-  Design and build user interfaces in the Teenage Engineering / Dieter Rams
-  functionalist-hardware aesthetic: neutral molded panels, a single bold accent
-  color, tactile knobs and buttons, LED and segmented displays, uppercase
-  monospace labels, visible "device chrome" (screws, bezels, serial numbers,
-  power LEDs), and playful retro-futurist technical detailing. Use this skill
-  whenever the user asks for a "Teenage Engineering style", "TE style", "OP-1
-  style", "Pocket Operator look", "Braun / Dieter Rams style", "functionalist
-  hardware UI", "retro hardware / synth / audio-gear interface", "device-like
-  UI", "tactile / physical interface", or "minimal skeuomorphic panels". Apply
-  it even when the user does NOT name the style but describes the ingredients —
-  cream or charcoal panels, knobs, screws, LED dots, a single orange/red/yellow
-  accent, monospace labels, a small phosphor/LCD screen, or anything that should
-  "look like a piece of hardware." Works for web (HTML/CSS/React), and the
-  principles transfer to native and design-tool work.
+  Teenage Engineering / Dieter Rams functionalist-hardware aesthetic: neutral
+  molded panels, a single bold accent color, tactile knobs and buttons, LED and
+  segmented displays, uppercase monospace labels, visible "device chrome"
+  (screws, bezels, serial numbers, power LEDs), and playful retro-futurist
+  technical detailing. Triggers: "TE style", "OP-1 style", "Pocket Operator
+  look", "Braun / Dieter Rams style", "functionalist hardware UI", "retro
+  hardware / synth / audio-gear interface", "device-like UI", "tactile /
+  physical interface", "minimal skeuomorphic panels", or descriptions involving
+  cream/charcoal panels, knobs, screws, LED dots, a single accent, monospace
+  labels, phosphor/LCD screens, or anything that should look like hardware.
 ---
 
 # Teenage Engineering UI
 
-Build interfaces that look like beautifully made physical instruments — in the
-lineage of Braun under Dieter Rams, carried forward by Teenage Engineering
-(OP-1, OP-Z, Pocket Operators, TX-6). The goal is **functionalism with a wink**:
-rigorously minimal and honest about function, then warmed up with one confident
-accent color and a few pieces of playful technical fiction.
+Interfaces that look like beautifully made physical instruments — in the lineage
+of Braun under Dieter Rams, carried forward by Teenage Engineering (OP-1, OP-Z,
+Pocket Operators, TX-6). **Functionalism with a wink**: rigorously minimal and
+honest about function, warmed up with one confident accent color and a few pieces
+of playful technical fiction.
 
-This is NOT generic neumorphism, not heavy leather-and-wood skeuomorphism, and
-not flat material design. Read "What it is / is not" below before building, then
-pull tokens and component recipes from `references/`.
+NOT generic neumorphism, not leather-and-wood skeuomorphism, not flat material
+design. Tokens and component recipes are in `references/`.
 
 ## What it is / is NOT
 
@@ -114,37 +109,29 @@ kit:
 
 ## Build workflow
 
-1. **Choose theme + accent.** Bone or Graphite; one accent. State the choice.
-2. **Load fonts + tokens.** Pull the Google Fonts `<link>` and the CSS custom
-   properties from `references/design-tokens.md` (or drop in
-   `assets/te-tokens.css`). Never hardcode hex values inline — theme through the
-   variables so the whole device stays coherent.
-3. **Frame the device first.** Build the enclosure: bezel, corner screws,
-   wordmark + product line, serial number, power LED, dot-matrix vent. This
-   container is what sells the aesthetic; do it before the controls.
-4. **Lay modules on the grid.** Group controls into labeled modules. Keep
-   generous, even gutters. Align to the 4px grid.
-5. **Drop in controls from the catalogue.** Reuse the recipes; keep radii,
-   shadows, and label styling consistent across all of them.
-6. **Add the wink.** Status bar, serials, channel/baud, version string, a couple
-   of inert indicator dots. Deadpan, not jokey.
-7. **Self-review** against `references/checklist.md` before delivering. The most
-   common failures are: too many accent colors, missing labels, mushy/blurry
-   depth, and forgetting the device chrome.
+1. **Choose theme + accent.** Bone or Graphite; one accent.
+2. **Load fonts + tokens.** Use `references/design-tokens.md` or drop in
+   `assets/te-tokens.css`. Never hardcode hex values — use variables.
+3. **Frame the device first.** Enclosure: bezel, corner screws, wordmark,
+   serial number, power LED, dot-matrix vent. This sells the aesthetic.
+4. **Lay modules on the grid.** Group controls into labeled modules. Even
+   gutters, 4px grid.
+5. **Drop in controls from the catalogue.** Consistent radii, shadows, labels.
+6. **Add the wink.** Status bar, serials, channel/baud, version string, inert
+   indicator dots. Deadpan, not jokey.
+7. **Self-review** against `references/checklist.md`. Common failures: too many
+   accents, missing labels, mushy depth, no device chrome.
 
-## Quick reference: starter
+## Starter template
 
-`assets/starter-template.html` is a complete, self-contained working device that
-demonstrates the entire system (enclosure, knob, mode chips, LEDs, recessed
-field, CRT screen, status bar). When a user wants something fast, start from it
-and adapt; when they want something custom, still read it once to calibrate the
-look, then build fresh from the tokens and component recipes.
+`assets/starter-template.html` — a complete, self-contained working device
+demonstrating the entire system (enclosure, knob, mode chips, LEDs, recessed
+field, CRT screen, status bar). Use it as a starting point or read it to
+calibrate the look before building fresh.
 
-## Adapting to React / components / native
+## Adapting to React / native
 
-The aesthetic is carried by tokens (color, type, depth, geometry) and the chrome
-metaphor — not by any one framework. In React, expose the tokens as CSS
-variables on a wrapper and build the catalogue items as components; keep the
-same label styling, single-accent rule, and device framing. In design tools or
-native UI, translate the token tables directly. The principles above are the
-contract; the CSS is one implementation of it.
+The aesthetic is carried by tokens and the chrome metaphor, not by any framework.
+In React, expose tokens as CSS variables on a wrapper and build the catalogue
+items as components. In native UI, translate the token tables directly. The
+principles are the contract; the CSS is one implementation.

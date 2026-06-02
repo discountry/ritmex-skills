@@ -1,15 +1,14 @@
-# teenage-engineering-ui (Claude/agent skill)
+# teenage-engineering-ui
 
-A portable **skill** that teaches an agentic coding tool how to design UIs in the
-Teenage Engineering / Dieter Rams functionalist-hardware aesthetic: neutral
-molded panels, one bold accent, tactile knobs and buttons, LED/segment displays,
-uppercase monospace labels, and visible "device chrome."
+Functionalist-hardware aesthetic for UI: neutral molded panels, one bold accent,
+tactile knobs and buttons, LED/segment displays, uppercase monospace labels, and
+visible "device chrome."
 
 ## Contents
 
 ```
 teenage-engineering-ui/
-├── SKILL.md                     # entry point: philosophy, principles, workflow
+├── SKILL.md                     # philosophy, principles, workflow
 ├── references/
 │   ├── design-tokens.md         # full color/type/spacing/shadow values (2 themes)
 │   ├── components.md            # working HTML/CSS recipes for every control
@@ -19,31 +18,9 @@ teenage-engineering-ui/
     └── starter-template.html    # complete, self-contained working device
 ```
 
-The skill uses progressive disclosure: the agent reads `SKILL.md` first, then
-pulls in the `references/` files only as needed. `assets/` are meant to be used
-directly in the output.
+## Quick preview
 
-## Install
-
-### Claude Code
-Place the `teenage-engineering-ui/` folder in your skills directory:
-
-- Project-level: `.claude/skills/teenage-engineering-ui/`
-- User-level (all projects): `~/.claude/skills/teenage-engineering-ui/`
-
-Claude Code auto-discovers `SKILL.md` and surfaces the skill by its frontmatter
-`description`. Then just ask, e.g. *"Build the settings screen in a Teenage
-Engineering style."*
-
-### Codex / other agentic tools
-Drop the folder into your project (e.g. `./skills/teenage-engineering-ui/`) and
-point the agent at it, or paste the contents of `SKILL.md` into the system /
-context for the task. The skill is plain Markdown + CSS/HTML with no runtime
-dependencies, so it works with any tool that can read repo files.
-
-### Quick preview
-Open `assets/starter-template.html` in a browser to see the target aesthetic
-before generating anything.
+Open `assets/starter-template.html` in a browser to see the target aesthetic.
 
 ## Notes
 - No build step, no dependencies. Fonts load from Google Fonts (swap for
