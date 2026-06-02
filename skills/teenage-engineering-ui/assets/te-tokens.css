@@ -1,0 +1,96 @@
+/* Teenage Engineering UI — design tokens
+ * Drop-in CSS custom properties. Set data-theme="graphite" on a wrapper (or
+ * <html>) to switch to the dark theme. Choose ONE hero accent via --accent. */
+
+:root,
+[data-theme="bone"] {
+  /* surfaces */
+  --bg:        #D9D6CB;
+  --enclosure: #E7E4DA;
+  --panel:     #EDEBE2;
+  --panel-2:   #F3F1EA;
+  --inset:     #DAD7CC;
+  --seam:      rgba(40, 36, 28, 0.10);
+  /* text */
+  --text:      #2B2A26;
+  --text-2:    #6F6C63;
+  --text-3:    #9C9991;
+  /* light/shadow */
+  --hi:        rgba(255, 255, 255, 0.90);
+  --sh:        rgba(76, 70, 54, 0.22);
+  --sh-soft:   rgba(76, 70, 54, 0.12);
+  /* display: sage LCD */
+  --lcd-bg:    #B6C29C;
+  --lcd-bg-2:  #AEBB92;
+  --lcd-fg:    #36402B;
+  --lcd-fg-2:  #5C6B49;
+  --lcd-glow:  rgba(54, 64, 43, 0.25);
+}
+
+[data-theme="graphite"] {
+  --bg:        #161614;
+  --enclosure: #232220;
+  --panel:     #2B2A28;
+  --panel-2:   #343230;
+  --inset:     #1B1A18;
+  --seam:      rgba(0, 0, 0, 0.45);
+  --text:      #ECE9E0;
+  --text-2:    #A8A49B;
+  --text-3:    #6E6B63;
+  --hi:        rgba(255, 255, 255, 0.06);
+  --sh:        rgba(0, 0, 0, 0.55);
+  --sh-soft:   rgba(0, 0, 0, 0.35);
+  --lcd-bg:    #2A3326;
+  --lcd-bg-2:  #232B20;
+  --lcd-fg:    #9DBE7E;
+  --lcd-fg-2:  #6E8757;
+  --lcd-glow:  rgba(157, 190, 126, 0.30);
+}
+
+:root {
+  /* CRT phosphor (theme-independent) */
+  --crt-bg:        #0C140C;
+  --crt-green:     #5BF870;
+  --crt-green-glow: rgba(91, 248, 112, 0.55);
+  --crt-amber:     #FFB000;
+  --crt-amber-glow: rgba(255, 176, 0, 0.50);
+
+  /* HERO ACCENT — pick one (orange is canonical). */
+  --accent:        #FF5A00;   /* options: #E8412B red, #F5A623 yellow, #B5D000 lime */
+  --accent-press:  #E04E00;
+  --on-accent:     #1A1206;
+
+  /* coded function dots (small only) */
+  --dot-red:   #E8412B;
+  --dot-amber: #F5A623;
+  --dot-green: #46B45A;
+  --dot-teal:  #29A99A;
+  --dot-blue:  #2D6CDF;
+  --dot-pink:  #DD5C93;
+
+  /* fonts */
+  --font-display: "Space Grotesk", "Archivo", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono:    "Space Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-screen:  "VT323", "Space Mono", ui-monospace, monospace;
+
+  /* type scale */
+  --fs-screen:   22px;
+  --fs-body:     15px;
+  --fs-wordmark: 18px;
+  --fs-label:    11px;
+  --fs-micro:    10px;
+
+  /* spacing (4px grid) */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+
+  /* radius & sizing */
+  --r-enclosure: 24px;
+  --r-module:    14px;
+  --r-control:   10px;
+  --r-pill:      999px;
+  --screw:       12px;
+  --led:         9px;
+  --knob:        92px;
+  --touch-min:   44px;
+}

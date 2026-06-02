@@ -22,6 +22,7 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[refine](skills/refine/SKILL.md)** | Improve UI/UX aesthetics and hierarchy — color, spacing, typography, layout, components. Trigger on beautify/polish/refine/modernize requests. |
 | **[post-tweet](skills/tweet/post-tweet.md)** | Post a tweet to X (Twitter) using the x-post-mcp server. Supports replies and quote tweets. |
 | **[codex-prompt-optimize](skills/codex-prompt-optimize/SKILL.md)** | Auto-trigger in Codex when user input is vague, ambiguous, or incomplete. Analyzes intent and emits a well-formed prompt before execution. |
+| **[teenage-engineering-ui](skills/teenage-engineering-ui/SKILL.md)** | Design and build UIs in the Teenage Engineering / Dieter Rams functionalist-hardware aesthetic: neutral molded panels, single bold accent color, tactile knobs and buttons, LED displays, uppercase monospace labels, and playful retro-futurist technical detailing. |
 
 ## Installation
 
@@ -72,6 +73,9 @@ npx skills add discountry/ritmex-skills --skill tweet
 
 # codex-prompt-optimize — Auto prompt optimization for Codex
 npx skills add discountry/ritmex-skills --skill codex-prompt-optimize
+
+# teenage-engineering-ui — Functionalist hardware-style UI design
+npx skills add discountry/ritmex-skills --skill teenage-engineering-ui
 ```
 
 ## License

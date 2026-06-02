@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" data-theme="bone">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AETHER·1 — Teenage Engineering UI starter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+/* ---- tokens (mirror of assets/te-tokens.css) ---- */
+:root{
+  --bg:#D9D6CB;--enclosure:#E7E4DA;--panel:#EDEBE2;--panel-2:#F3F1EA;--inset:#DAD7CC;
+  --seam:rgba(40,36,28,.10);--text:#2B2A26;--text-2:#6F6C63;--text-3:#9C9991;
+  --hi:rgba(255,255,255,.90);--sh:rgba(76,70,54,.22);--sh-soft:rgba(76,70,54,.12);
+  --lcd-bg:#B6C29C;--lcd-bg-2:#AEBB92;--lcd-fg:#36402B;--lcd-fg-2:#5C6B49;
+  --accent:#FF5A00;--accent-press:#E04E00;--on-accent:#1A1206;
+  --dot-red:#E8412B;--dot-amber:#F5A623;--dot-green:#46B45A;--dot-teal:#29A99A;--dot-blue:#2D6CDF;--dot-pink:#DD5C93;
+  --font-display:"Space Grotesk","Archivo","Helvetica Neue",system-ui,sans-serif;
+  --font-mono:"Space Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
+  --font-screen:"VT323","Space Mono",ui-monospace,monospace;
+  --fs-screen:22px;--fs-body:15px;--fs-wordmark:18px;--fs-label:11px;--fs-micro:10px;
+  --sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;
+  --r-enclosure:24px;--r-module:14px;--r-control:10px;--r-pill:999px;
+  --screw:12px;--led:9px;--knob:92px;--touch-min:44px;
+}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;display:grid;place-items:center;padding:40px;
+  background:radial-gradient(120% 120% at 50% 0%, color-mix(in srgb,var(--bg) 88%, white), var(--bg));
+  font-family:var(--font-display);color:var(--text)}
+
+/* ---- enclosure ---- */
+.te-device{position:relative;width:min(960px,100%);padding:var(--sp-5);
+  background:linear-gradient(180deg,var(--panel-2),var(--enclosure));
+  border:1px solid var(--seam);border-radius:var(--r-enclosure);
+  box-shadow:0 1px 0 var(--hi) inset,0 2px 1px var(--sh-soft),0 24px 48px -12px var(--sh)}
+.te-screw{position:absolute;width:var(--screw);height:var(--screw);border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--panel-2),var(--inset));
+  border:1px solid var(--seam);box-shadow:0 1px 1px var(--hi),0 1px 2px var(--sh) inset}
+.te-screw::after{content:"";position:absolute;inset:0;margin:auto;width:60%;height:1.5px;
+  background:var(--sh);border-radius:1px;transform:rotate(-35deg)}
+.s-tl{top:10px;left:10px}.s-tr{top:10px;right:10px}.s-bl{bottom:10px;left:10px}.s-br{bottom:10px;right:10px}
+
+/* ---- header ---- */
+.te-header{display:flex;align-items:center;justify-content:space-between;margin:var(--sp-2) var(--sp-2) var(--sp-5)}
+.te-wordmark{font-weight:700;font-size:var(--fs-wordmark);letter-spacing:.14em;text-transform:uppercase}
+.te-wordmark span{color:var(--text-3);font-size:var(--fs-label);letter-spacing:.2em;margin-left:var(--sp-2)}
+.te-header-right{display:flex;align-items:center;gap:var(--sp-4)}
+.te-matrix{width:56px;height:28px;border-radius:4px;
+  background-image:radial-gradient(var(--text-3) 1.1px,transparent 1.3px);background-size:8px 8px;opacity:.45}
+.te-micro{font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;color:var(--text-3)}
+.te-led-label{display:flex;align-items:center;gap:var(--sp-2);font-family:var(--font-mono);
+  font-size:var(--fs-micro);letter-spacing:.12em;color:var(--text-2)}
+
+/* ---- layout ---- */
+.te-body{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5)}
+@media(max-width:720px){.te-body{grid-template-columns:1fr}}
+.te-col{display:flex;flex-direction:column;gap:var(--sp-4)}
+
+/* ---- shared ---- */
+.te-label{font-family:var(--font-mono);font-size:var(--fs-label);font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)}
+.te-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.te-led{width:var(--led);height:var(--led);border-radius:50%;flex:none;background:var(--text-3);box-shadow:0 0 0 1px var(--seam) inset}
+.te-led.on{background:var(--dot-green);box-shadow:0 0 7px var(--dot-green)}
+
+/* ---- field ---- */
+.te-field{width:100%;font-family:var(--font-mono);font-size:var(--fs-body);color:var(--text);
+  padding:var(--sp-3) var(--sp-4);background:var(--inset);border:1px solid var(--seam);
+  border-radius:var(--r-control);box-shadow:0 2px 5px var(--sh) inset,0 -1px 0 var(--hi) inset;outline:none}
+.te-field::placeholder{color:var(--text-3)}
+.te-field:focus{border-color:color-mix(in srgb,var(--accent) 50%,var(--seam))}
+textarea.te-field{resize:none;min-height:120px;line-height:1.5}
+
+/* ---- knob ---- */
+.te-knob-row{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)}
+.te-knob{--angle:-28deg;position:relative;width:var(--knob);height:var(--knob);border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,var(--panel-2),var(--panel) 60%,var(--inset));
+  border:1px solid var(--seam);box-shadow:0 1px 0 var(--hi) inset,0 4px 10px var(--sh),0 1px 2px var(--sh) inset;cursor:grab}
+.te-knob::before{content:"";position:absolute;inset:-9px;border-radius:50%;
+  background:repeating-conic-gradient(var(--text-3) 0 1.2deg,transparent 1.2deg 12deg);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));opacity:.55}
+.te-knob::after{content:"";position:absolute;left:50%;top:8px;width:3px;height:26%;background:var(--accent);
+  border-radius:2px;transform-origin:50% 100%;transform:translateX(-50%) rotate(var(--angle))}
+.te-knob-cap{flex:1}
+.te-readout{font-family:var(--font-mono);font-weight:700;font-size:var(--fs-body);color:var(--text);
+  padding:var(--sp-2) var(--sp-3);background:var(--lcd-bg);border:1px solid var(--seam);border-radius:8px;
+  box-shadow:0 2px 4px var(--sh) inset;text-align:center;color:var(--lcd-fg)}
+
+/* ---- mode chips ---- */
+.te-modes{display:flex;gap:var(--sp-2)}
+.te-chip{position:relative;flex:1;min-height:var(--touch-min);padding:0 var(--sp-3);font-family:var(--font-display);
+  font-weight:600;font-size:var(--fs-body);color:var(--text-2);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--seam);border-radius:var(--r-control);cursor:pointer;box-shadow:0 1px 0 var(--hi) inset,0 3px 8px var(--sh-soft)}
+.te-chip-dot{position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--text-3);box-shadow:0 0 0 1px var(--seam) inset}
+.te-chip.is-active{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--seam))}
+.te-chip.is-active .te-chip-dot{background:var(--accent);box-shadow:0 0 6px var(--accent)}
+
+/* ---- primary button ---- */
+.te-btn{width:100%;font-family:var(--font-display);font-weight:700;font-size:var(--fs-body);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--on-accent);min-height:52px;border-radius:var(--r-control);cursor:pointer;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 88%,white),var(--accent));
+  border:1px solid var(--accent-press);
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 2px 6px color-mix(in srgb,var(--accent) 40%,transparent),0 8px 18px var(--sh);
+  transition:transform .04s ease}
+.te-btn:active{transform:translateY(1px);background:var(--accent-press)}
+
+/* ---- screen panel ---- */
+.te-panel{background:var(--panel);border:1px solid var(--seam);border-radius:var(--r-module);
+  padding:var(--sp-4);box-shadow:0 1px 0 var(--hi) inset,0 6px 14px var(--sh-soft);display:flex;flex-direction:column;height:100%}
+.te-screen{position:relative;overflow:hidden;flex:1;min-height:360px;padding:var(--sp-4);border-radius:var(--r-control);
+  border:1px solid var(--seam);box-shadow:0 3px 8px var(--sh) inset,0 -1px 0 var(--hi) inset;
+  background:linear-gradient(180deg,var(--lcd-bg),var(--lcd-bg-2));color:var(--lcd-fg);
+  font-family:var(--font-screen);font-size:var(--fs-screen);line-height:1.45}
+.te-screen::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 3px)}
+.te-screen-tag{display:block;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;color:var(--lcd-fg-2);text-transform:uppercase}
+.te-screen-line{margin-bottom:var(--sp-3)}
+.te-status{display:flex;justify-content:space-between;gap:var(--sp-4);margin-top:var(--sp-4);padding-top:var(--sp-3);
+  border-top:1px solid var(--seam);font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;color:var(--text-3)}
+</style>
+</head>
+<body>
+  <main class="te-device" aria-label="AETHER-1 neural terminal">
+    <i class="te-screw s-tl" aria-hidden="true"></i><i class="te-screw s-tr" aria-hidden="true"></i>
+    <i class="te-screw s-bl" aria-hidden="true"></i><i class="te-screw s-br" aria-hidden="true"></i>
+
+    <header class="te-header">
+      <div class="te-wordmark">AETHER·1 <span>NEURAL TERMINAL</span></div>
+      <div class="te-header-right">
+        <span class="te-micro">SN 47-Δ</span>
+        <span class="te-led-label"><i class="te-led on"></i> PWR</span>
+        <span class="te-matrix" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <div class="te-body">
+      <!-- left: controls -->
+      <section class="te-col">
+        <div>
+          <div class="te-label"><i class="te-dot" style="background:var(--dot-green)"></i> API KEY</div>
+          <input class="te-field" type="password" value="sk-aether-00000000000000" aria-label="API key">
+        </div>
+
+        <div class="te-knob-row">
+          <div>
+            <div class="te-label"><i class="te-dot" style="background:var(--dot-blue)"></i> MODEL</div>
+            <div class="te-knob" id="knob" role="slider" aria-label="Model" aria-valuenow="1" tabindex="0"></div>
+          </div>
+          <div class="te-knob-cap">
+            <div class="te-readout" id="readout">GPT-X</div>
+            <div class="te-label" style="justify-content:center;margin:var(--sp-2) 0 0">TURN TO SET</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="te-label"><i class="te-dot" style="background:var(--dot-pink)"></i> SYSTEM</div>
+          <div class="te-modes" id="modes">
+            <button class="te-chip is-active">Translator<i class="te-chip-dot"></i></button>
+            <button class="te-chip">Programmer<i class="te-chip-dot"></i></button>
+            <button class="te-chip">Email<i class="te-chip-dot"></i></button>
+          </div>
+        </div>
+
+        <div>
+          <div class="te-label"><i class="te-dot" style="background:var(--dot-amber)"></i> USER</div>
+          <textarea class="te-field" placeholder="Type your message…  (⌘/Ctrl + Enter to transmit)"></textarea>
+        </div>
+
+        <button class="te-btn">Submit</button>
+      </section>
+
+      <!-- right: screen -->
+      <section class="te-panel">
+        <div class="te-label"><i class="te-dot on" style="background:var(--dot-green)"></i> ASSISTANT</div>
+        <div class="te-screen">
+          <div class="te-screen-line"><span class="te-screen-tag">USER</span>&gt; Hello, I am a human.</div>
+          <div class="te-screen-line"><span class="te-screen-tag">ASSISTANT</span>Greetings, I am a human being.</div>
+        </div>
+        <footer class="te-status">
+          <span>MODEL: GPT-X</span><span>MODE: TRANSLATOR</span><span>CH 01 · 38400 BAUD</span>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+<script>
+  // minimal interactivity to demonstrate honest, tactile controls
+  var models = ["GPT-X","CLAUDE","LLAMA","MIXTRAL","LOCAL"], idx = 0;
+  var knob = document.getElementById('knob'), out = document.getElementById('readout');
+  function setModel(i){ idx=(i+models.length)%models.length;
+    knob.style.setProperty('--angle', (-60 + idx*30) + 'deg'); out.textContent = models[idx];
+    knob.setAttribute('aria-valuenow', idx); }
+  knob.addEventListener('click', function(){ setModel(idx+1); });
+  knob.addEventListener('keydown', function(e){ if(e.key==='ArrowRight'||e.key==='ArrowUp') setModel(idx+1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown') setModel(idx-1); });
+
+  document.getElementById('modes').addEventListener('click', function(e){
+    var chip = e.target.closest('.te-chip'); if(!chip) return;
+    [].forEach.call(this.children, function(c){ c.classList.remove('is-active'); });
+    chip.classList.add('is-active');
+  });
+</script>
+</body>
+</html>
