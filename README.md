@@ -24,6 +24,7 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[codex-prompt-optimize](skills/codex-prompt-optimize/SKILL.md)** | Auto-trigger in Codex when user input is vague, ambiguous, or incomplete. Analyzes intent and emits a well-formed prompt before execution. |
 | **[teenage-engineering-ui](skills/teenage-engineering-ui/SKILL.md)** | Design and build UIs in the Teenage Engineering / Dieter Rams functionalist-hardware aesthetic: neutral molded panels, single bold accent color, tactile knobs and buttons, LED displays, uppercase monospace labels, and playful retro-futurist technical detailing. |
 | **[anti-ui-slop](skills/anti-ui-slop/SKILL.md)** | Detect and fix ~40 AI-generated UI anti-patterns ("AI slop") by static source analysis. Zero dependencies — scans HTML/CSS/JSX/Tailwind for visual, typographic, color, layout, motion, and copy tells, then rewrites the offending code. |
+| **[create-design-md](skills/create-design-md/SKILL.md)** | Generate a complete DESIGN.md design-system spec (`@google/design.md` format) at the project root — synthesized from a description, screenshots, code, a reference brand, or the project's own codebase, then lint-validated. Ships four archetype brand analyses (Stripe, Linear, Vercel, Notion) as reference bases. |
 
 ## Installation
 
@@ -80,6 +81,9 @@ npx skills add discountry/ritmex-skills --skill teenage-engineering-ui
 
 # anti-ui-slop — AI-generated UI anti-pattern detector & fixer
 npx skills add discountry/ritmex-skills --skill anti-ui-slop
+
+# create-design-md — DESIGN.md design-system spec generator
+npx skills add discountry/ritmex-skills --skill create-design-md
 ```
 
 ## License
