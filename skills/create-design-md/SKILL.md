@@ -1,6 +1,6 @@
 ---
 name: create-design-md
-description: Generate a complete DESIGN.md design-system specification at the root of the current project, synthesized from whatever material is available — a written description, UI screenshots, code snippets, a reference brand, or the project's own codebase (CSS variables, Tailwind config, theme files, component styles). Use whenever the user asks to create or update a DESIGN.md, document or extract a design system, pull design tokens out of code or screenshots, "写一份设计规范 / 生成设计文档", wants their UI to follow a named brand's look (e.g. "make it feel like Stripe/Linear/Vercel"), or needs a machine-readable token spec (colors / typography / spacing / radius / components) so future UI work stays consistent.
+description: Generate a complete DESIGN.md design-system specification at the root of the current project, synthesized from whatever material is available — a written description, UI screenshots, one or more live website URLs, code snippets, a reference brand, or the project's own codebase (CSS variables, Tailwind config, theme files, component styles). Use whenever the user asks to create or update a DESIGN.md, document or extract a design system, pull design tokens out of code, screenshots, or a website ("照着这个网站生成设计规范"), "写一份设计规范 / 生成设计文档", wants their UI to follow a named brand's look (e.g. "make it feel like Stripe/Linear/Vercel"), or needs a machine-readable token spec (colors / typography / spacing / radius / components) so future UI work stays consistent.
 ---
 
 # Create DESIGN.md
@@ -16,11 +16,12 @@ Read `references/format.md` before writing the file. It contains the exact front
 Establish what evidence exists before extracting anything:
 
 - **Screenshots / images** — the user attached them or gave paths. Read each one.
+- **Live URL(s)** — the user gave one or more web addresses. The rendered site is ground truth for its own design; mine its CSS and screenshot it (playbook below).
 - **Code or codebase** — the user pointed at files, or the working directory is a project with UI code. Detect UI code with a quick scan (`package.json` deps, `*.css`, `tailwind.config.*`, theme files).
 - **Written description** — the user described the look they want ("dark, dense, terminal-inspired…").
 - **Brand reference** — the user named a brand. Check `resources/design-md/` in this skill's directory for a ready-made analysis (stripe, linear.app, vercel, notion). If present, use it as the base and adapt it to the project rather than re-deriving from scratch. For other brands, derive the system from screenshots or the brand's live site; getdesign.md hosts downloadable analyses of many more brands the user can supply.
 
-Sources combine. When they conflict, trust in this order: **actual code values > screenshot measurements > description inferences > brand-reference defaults**. Code is ground truth for what the project ships today; everything else is interpretation.
+Sources combine. When they conflict, trust in this order: **actual code values (project source, or CSS / computed styles fetched from a live URL) > screenshot measurements > description inferences > brand-reference defaults**. Code is ground truth for what actually ships; everything else is interpretation.
 
 ### 2. Gather evidence
 
@@ -31,6 +32,14 @@ Sources combine. When they conflict, trust in this order: **actual code values >
 - Theme objects: `theme.ts`, `tokens.{ts,json}`, styled-components / Emotion themes, MUI `createTheme`, Chakra `extendTheme`, `components.json` (shadcn).
 - Real components: read `Button`, `Card`, `Input`, nav, and modal implementations for padding, radius, type sizes, and state colors — these are the values users actually see, and they override stale config entries.
 - Frequency matters: grep for how often each color/size is used. The most-used interactive color is `primary`; a value used once is an accent or a candidate for **Known Gaps**, not a core token.
+
+**From a live URL** — a website carries both kinds of evidence at once; collect them in this order:
+
+1. **Mine the shipped CSS.** Fetch the page HTML (`curl -sL <url>`), collect every `<link rel="stylesheet">` href and inline `<style>` block, and fetch each stylesheet. Extract `:root` / `@theme` custom properties, `font-family` stacks, color literals, radius, shadow, and `@media` breakpoint values. Frequency-count colors across the CSS — the most-used interactive color is `primary`. Hashed/bundled CSS is normal; tokens still live in custom properties. With utility-class output (Tailwind), read the emitted values, not the class names. The same property appearing with two values is usually a light/dark theme pair, not a conflict — document the mode the user cares about and note the other in **Known Gaps**.
+2. **Render and measure.** If browser automation is available (the agent-browser skill, or any Playwright/CDP setup), open the page at ~1440px and ~390px widths, screenshot both, and read `getComputedStyle` off the key elements — `body`, `h1`, the primary button, an input, a card. Computed values are exact and beat both raw CSS mining (which can't tell which rules win) and screenshot sampling (which is estimation). Analyze the screenshots like any other screenshot evidence.
+3. **Never rely on a page-to-markdown fetcher** (WebFetch-style tools) for design evidence — the conversion strips all styling. Use it only for copy and tone.
+
+Multiple URLs mean one of two things. Pages of the **same product** (home, pricing, app): merge into one system and note per-surface variation in the body, the way `resources/design-md/stripe` handles marketing vs dashboard tracks. **Different products**: the user wants a blend — pick the dominant base from context, and record in **Known Gaps** which site contributed each token group; if the intended blend is genuinely unclear, ask before writing.
 
 **From screenshots** — read every image and extract systematically: dominant surface colors, text colors, the one color used for primary actions, corner radii (sharp / subtle / pill), type scale and weight contrast between headings and body, spacing density, shadows or borders as the depth medium, and any signature element (gradient, texture, unusual component). Hex values sampled from screenshots are estimates — normalize obvious near-duplicates (e.g. `#fefefe` → `#ffffff`) instead of minting a token per artifact.
 
