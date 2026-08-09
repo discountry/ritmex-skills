@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agent Handoff"
+  short_description: "Continue the latest unfinished Claude/Codex task"
+  default_prompt: "Take over the latest unfinished task from the other coding agent in this working directory."
+policy:
+  allow_implicit_invocation: false

@@ -26,6 +26,7 @@ A collection of reusable AI coding agent skills compatible with mainstream AI-po
 | **[anti-ui-slop](skills/anti-ui-slop/SKILL.md)** | Detect and fix ~40 AI-generated UI anti-patterns ("AI slop") by static source analysis. Zero dependencies — scans HTML/CSS/JSX/Tailwind for visual, typographic, color, layout, motion, and copy tells, then rewrites the offending code. |
 | **[create-design-md](skills/create-design-md/SKILL.md)** | Generate a complete DESIGN.md design-system spec (`@google/design.md` format) at the project root — synthesized from a description, screenshots, code, a reference brand, or the project's own codebase, then lint-validated. Ships four archetype brand analyses (Stripe, Linear, Vercel, Notion) as reference bases. |
 | **[how-to-use-effect](skills/how-to-use-effect/SKILL.md)** | Write, review, and debug `useEffect` correctly. Five checkable invariants plus an 8-step audit for the failure class no linter catches — chiefly the self-cancelling Effect, where an Effect writes state in its own dep array and its cleanup discards the response it was waiting for. Complements `react-principles`, which covers whether to write an Effect at all. |
+| **[agent-handoff](skills/agent-handoff/SKILL.md)** | Continue the latest unfinished coding task between Claude Code and Codex using native session history and a deterministic snapshot of the current Git workspace. Preserves the current directory, branch, and existing changes. |
 
 ## Installation
 
@@ -88,6 +89,9 @@ npx skills add discountry/ritmex-skills --skill create-design-md
 
 # how-to-use-effect — useEffect correctness invariants & audit
 npx skills add discountry/ritmex-skills --skill how-to-use-effect
+
+# agent-handoff — Continue unfinished work across Claude Code and Codex
+npx skills add discountry/ritmex-skills --skill agent-handoff
 ```
 
 ## License
